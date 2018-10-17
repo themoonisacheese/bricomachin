@@ -7,19 +7,19 @@
 <link rel="stylesheet" type="text/css" href="../view/design/style.css"
 </head>
 
-<body>
-<header>
-<h1>Bricomachin, le bricolage malin </h1>
-<p><img src="../view/design/pub.png"/></p>
-</header>
-<?php
-    /////////////////////////////////////////
-    // A Completer pour afficher la liste des catégories
-    /////////////////////////////////////////
-    
-    ?>
-<footer>
-</p>Site fictif, issus de données réelles du Web</p>
-</footer>
-</body>
+  <body>
+    <header>
+      <h1>Bricomachin, le bricolage malin </h1>
+      <p><img src="../view/design/pub.png"/></p>
+    </header>
+  <?php
+      foreach ($categories as $cat) {
+        echo $cat->nom . "<br>";
+      }
+
+      ?>
+    <footer>
+      </p>Site fictif, issus de données réelles du Web</p>
+    </footer>
+  </body>
 </html>

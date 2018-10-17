@@ -12,13 +12,15 @@
         // L'objet local PDO de la base de donnée
         private $db;
         // Le type, le chemin et le nom de la base de donnée
-        private $database = 'sqlite:../data/db/bricomachin.db';
+        private $database = 'sqlite:../data/data.db';
 
         // Constructeur chargé d'ouvrir la BD
         function __construct() {
-            ///////////////////////////////////////////////////////
-            //  A COMPLETER
-            ///////////////////////////////////////////////
+          try {
+            $this->db = new PDO($this->database);
+          } catch (\PDOException $e) {
+            throw new \PDOException($e->getMessage(), (int)$e->getCode());
+          }
 
         }
 
@@ -26,10 +28,7 @@
         // Accès à toutes les catégories
         // Retourne une table d'objets de type Categorie
         function getAllCat() : array {
-            ///////////////////////////////////////////////////////
-            //  A COMPLETER
-            ///////////////////////////////////////////////////////
-            return array();
+            return $this->db->query("select * from categorie")->fetchAll(PDO::FETCH_CLASS, 'Categorie');
         }
 
 

@@ -4,8 +4,7 @@
     // Inclusion du modèle
     include_once("../model/DAO.class.php");
 
-    ///////////////////////////////////////////////////////////
-    // A COMPLETER
-    ///////////////////////////////////////////////////////////
+    $categories = $dao->getAllCat();
+    include_once("../view/categories.view.php");
 
     ?>
