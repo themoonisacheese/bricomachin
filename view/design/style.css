@@ -40,7 +40,7 @@ nav a:visited, nav a:active , nav a:link{
 	text-decoration: none;
 }
 
-article {
+.article {
    width: 220px;
   height: 200px;
    display: inline-block;
@@ -50,10 +50,10 @@ article {
 	padding-right: 5px;
 	vertical-align: top;
 }
-article h2 {
+.article h2 {
 		font-size:small;
 }
 
-article img {
+.article img {
 	   width: 100px;
 }
