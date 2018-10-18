@@ -4,6 +4,6 @@ require_once('DAO.class.php');
 
 // Recupère toutes les catégories
 $ref = 60040351;
-echo "la reference apres $ref est " . $dao->next($ref) ." ta race";
+echo "la reference apres $ref est " . $dao->next($ref) ;
 
  ?>

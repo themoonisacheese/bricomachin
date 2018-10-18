@@ -54,15 +54,15 @@
 
         // Acces aux n articles qui précèdent de $n la référence $ref dans l'ordre des références
         function prevN(int $ref,int $n): array {
-          
-            return array();
+          return $this->db->query("select * from (select * from article where ref < $ref order by  ref DESC limit $n) order by ref;")->fetchAll(PDO::FETCH_CLASS, 'Article');
+
+
         }
-
-
 
         // Acces à une catégorie
         // Retourne un objet de la classe Categorie connaissant son identifiant
         function getCat(int $id): Categorie {
+
             return $this->db->query("select * from categorie where id = $id;")->fetchAll(PDO::FETCH_CLASS, 'Categorie')[0];
         }
 

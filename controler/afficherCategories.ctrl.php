@@ -7,4 +7,10 @@
     $categories = $dao->getAllCat();
     include_once("../view/categories.view.php");
 
+      if (isset($_GET["ref"])){
+        $articles= getN($_GET["ref"],12);
+      }else{
+        $articles= firstN(12);
+      }
+
     ?>
