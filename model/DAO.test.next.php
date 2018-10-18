@@ -3,9 +3,7 @@
 require_once('DAO.class.php');
 
 // Recupère toutes les catégories
-$cat = $dao->getAllCat();
-
-// Affiche 2 catégories pour le test : affiche le pere d'une catégorie
-print($cat[3]->id.' '.$cat[3]->nom.' < '.$cat[3]->pere.' '.$cat[$cat[3]->id]->nom."\n");
+$ref = 60040351;
+echo "la reference apres $ref est " . $dao->next($ref) ;
 
  ?>

@@ -28,7 +28,7 @@
         // Accès à toutes les catégories
         // Retourne une table d'objets de type Categorie
         function getAllCat() : array {
-            return $this->db->query("select * from categorie")->fetchAll(PDO::FETCH_CLASS, 'Categorie');
+            return $this->db->query("select * from categorie;")->fetchAll(PDO::FETCH_CLASS, 'Categorie');
         }
 
 
@@ -37,49 +37,32 @@
         // Cette méthode retourne un tableau contenant les n permier articles de
         // la base sous la forme d'objets de la classe Article.
         function firstN(int $n) : array {
-            ///////////////////////////////////////////////////////
-            //  A COMPLETER
-            ///////////////////////////////////////////////
-            return array();
+            return $this->db->query("select * from article order by ref limit $n;")->fetchAll(PDO::FETCH_CLASS, 'Article');
         }
 
         // Acces au n articles à partir de la reférence $ref
         // Cette méthode retourne un tableau contenant n  articles de
         // la base sous la forme d'objets de la classe Article.
         function getN(int $ref,int $n) : array {
-            ///////////////////////////////////////////////////////
-            //  A COMPLETER
-            ///////////////////////////////////////////////
-            return array();
-
+            return $this->db->query("select * from article where ref >= $ref order by ref limit $n;")->fetchAll(PDO::FETCH_CLASS, 'Article');
         }
 
         // Acces à la référence qui suit la référence $ref dans l'ordre des références
         function next(int $ref) : int {
-            ///////////////////////////////////////////////////////
-            //  A COMPLETER
-            ///////////////////////////////////////////////
-            return 0;
+            return $this->db->query("select * from article where ref> $ref order by ref limit 1;")->fetchAll(PDO::FETCH_CLASS, 'Article')[0]->ref;
         }
 
         // Acces aux n articles qui précèdent de $n la référence $ref dans l'ordre des références
         function prevN(int $ref,int $n): array {
-            ///////////////////////////////////////////////////////
-            //  A COMPLETER
-            ///////////////////////////////////////////////
-            return array();
+          return $this->db->query("select * from (select * from article where ref < $ref order by  ref DESC limit $n) order by ref;")->fetchAll(PDO::FETCH_CLASS, 'Article');
+
         }
-
-
 
         // Acces à une catégorie
         // Retourne un objet de la classe Categorie connaissant son identifiant
         function getCat(int $id): Categorie {
-            ///////////////////////////////////////////////////////
-            //  A COMPLETER
-            ///////////////////////////////////////////////////////
+          return $this->db->query("select * from categorie where id = $id;")->fetchAll(PDO::FETCH_CLASS, 'Categorie');
 
-            return new Categorie();
         }
 
 
