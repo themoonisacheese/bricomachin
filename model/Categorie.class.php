@@ -1,3 +1,4 @@
+
 <?php
 
     class Categorie {
@@ -6,12 +7,15 @@
         public $pere; // catégorie parente
 
         function getPath() {
-            ///////////////////////////////////////////////////////
-            //  A COMPLETER
-            ///////////////////////////////////////////////////////
-            
+          global $dao;
+          $ret = array();
+            while($ret[0]->id != 1){
+              array_unshift($ret, $dao->db->query("select * from categorie where id = ".$ret[0]->pere)[0]);
+            }
+          return $ret;
         }
     }
 
 
 ?>
+

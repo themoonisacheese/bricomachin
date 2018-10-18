@@ -1,3 +1,4 @@
+
 <html>
 <head>
   <title>Bricomachin</title>
@@ -14,11 +15,15 @@
   </header>
   <?php
 
+  if (isset($categorie)) {
+    foreach ($categorie->getPath() as $cat) {
+      echo $cat->nom.">";
+    }
+    echo "<br>";
+  } else {
+    echo "Produits><br>";
+  }
 
-  ///////////////////////////////////////////////////////
-  //   A COMPLETER
-  ///////////////////////////////////////////////
-  // Si une categorie est définie
 
   ?>
 
@@ -32,12 +37,13 @@
   </nav>
 
   <?php
-  ///////////////////////////////////////////////////////
-  //  A COMPLETER
-  ///////////////////////////////////////////////
-
-  // Affichage des articles
-  
+  foreach ($articles as $art):?>
+    <div class="article">
+      <h2><?=$art->nom?></h2><br>
+      <img src="http://www-info.iut2.upmf-grenoble.fr/intranet/enseignements/ProgWeb/data/bricomachin/img/<?=$art->image ?>" alt=""><br>
+      <h2><?=$art->prix?>€</h2>
+    </div>
+  <?php endforeach;
   ?>
   <footer>
   </p>Site fictif, issus de données réelles du Web</p>
